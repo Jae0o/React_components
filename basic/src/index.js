@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import AppProfile from './AppProfile';
 // import AppJSX from './AppJSX'; 문법
+import Counter from './components/Counter';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AppProfile />
+    <Counter />
   </React.StrictMode>
 );
 
