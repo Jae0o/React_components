@@ -43,7 +43,38 @@
   margin: 1.5rem;
 }
 
+/* ----------------- Count ---------------------------- */
+
 .CounterBox {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin: 40px;
+  border: 2px black solid;
+  border-radius: 40px;
+  background-color: #ebebeb;
+}
+
+.CounterScore {
+  border: 2px black solid;
+  border-radius: 40px;
+  font-size: 30px;
+  width: 700px;
+  height: 60px;
+  text-align: center;
+  background-color: #fff;
+  align-items: center;
+}
+
+.Counters {
+  display: flex;
+}
+
+.Counter {
   border: solid Black 2px;
   border-radius: 40px;
   width: 300px;
@@ -52,7 +83,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 40px
+  margin: 40px;
+  background-color: #fff;
 }
 
 .CounterNum {

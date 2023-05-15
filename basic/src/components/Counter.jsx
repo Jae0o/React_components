@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 
-export default function Counter() {
+export default function Counter({ total, totalClick }) {
     const [num, setNum] = useState(0);
     return (
-        <div className='CounterBox'>
-            <sapn className='CounterNum'>{num}</sapn>
+        <div className='Counter'>
+            <div className='CounterNum'>{num}</div>
+            <sapn>total : {total}</sapn>
             <button className='CounterButton'
-                onClick={() => { setNum(num + 1); }}
+                onClick={() => {
+                    setNum(num + 1);
+                    totalClick();
+                }}
             >ADD</button>
-        </div>
+        </div >
     )
 }
 // usestate는 변경이 가능한 값을 반환한다. 또 함수를 리턴하는데 해당 변수를 업데이트 할수 잇는 함수를 반환한다.
