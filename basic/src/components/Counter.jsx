@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
-export default function Counter({ total, totalClick }) {
+export default function Counter({ total, totalClick, counterName }) {
     const [num, setNum] = useState(0);
     return (
         <div className='Counter'>
+            {counterName && <span className='CounterName'>{counterName}</span>}
             <div className='CounterNum'>{num}</div>
             <sapn>total : {total}</sapn>
             <button className='CounterButton'
