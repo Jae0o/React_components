@@ -1,24 +1,29 @@
-import React, { useState } from 'react'
-// import Price from '../../public/price.json'
+import React, { useEffect, useState } from 'react'
 
 export default function Product() {
     const [Json, setJson] = useState([]);
+    const [Checked, setChecked] = useState(false);
+    const onChanged = () => setChecked((prev) => !prev);
 
-    fetch('data/Price.json')
-        .then(item => item.json())
-        .then((data) => {
-            console.log(data);
-            setJson(data);
-        });
+    useEffect(() => {
+        fetch(`data/${Checked ? "Computer" : "Cloth"}.json`)
+            .then(item => item.json())
+            .then((data) => { setJson(data) });
+    }, [Checked])
+
 
     return (
-        <ul>
-            {Json.map((Price) => (
-                <li key={Price.id}>
-                    <h3>{Price.name}</h3>
-                    <p>{Price.price}</p>
-                </li>
-            ))}
-        </ul>
+        <div>
+            <input id="checkBox" type='checkbox' value={Checked} onChange={onChanged} />
+            <label htmlFor='checkBox'> 목록 바꾸기 </label>
+            <ul>
+                {Json.map((Price) => (
+                    <li key={Price.id}>
+                        <h3>{Price.name}</h3>
+                        <p>{Price.price}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
     )
 }
