@@ -5,12 +5,16 @@ import AppProfile from './AppProfile';
 // import AppJSX from './AppJSX'; 문법
 import reportWebVitals from './reportWebVitals';
 import CounterBox from './components/CounterBox';
+import AppProduct from './components/AppProduct';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AppProfile />
+    {/* 기본적 사용방법과 component의 이해 */}
     <CounterBox />
+    {/* Props and State 의 응용과 연습 */}
+    <AppProduct />
   </React.StrictMode>
 );
 

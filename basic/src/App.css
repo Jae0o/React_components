@@ -110,3 +110,20 @@
   padding: 5px 10px;
   margin: 50px
 }
+
+/* ----------------- Product ---------------------------- */
+
+.AppProductBox {
+  margin: 50px;
+  padding: 10px;
+  border: 2px black solid;
+  width: 500px;
+}
+
+.ToggleButton {
+  background-color: #efefef;
+  border: 2px black solid;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 30px;
+}
