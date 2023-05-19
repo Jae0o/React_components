@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppPointer from './components/AppPointer';
+import AppMatch from './components/AppMatch';
+import AppScore from './components/AppScore';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -10,6 +12,9 @@ root.render(
   <React.StrictMode>
     <AppPointer />
     {/* Browser Event */}
+    <AppMatch />
+    {/* 중첩 Object와 onClick 심화 */}
+    <AppScore />
   </React.StrictMode>
 );
 
