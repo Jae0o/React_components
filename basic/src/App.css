@@ -1,129 +1,14 @@
-.Body {
-  display: flex;
+.BaseContainer {
+  width: 90%;
+  height: 700px;
+  border: 2px solid black;
 }
 
-.ComProfile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  text-align: center;
-  padding: 1rem;
-  background-color: #ebebeb;
-  border-radius: 20px;
-  margin: 1.5rem;
-  box-shadow: -2px 2px 44px 2px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: -2px 2px 44px 2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -2px 2px 44px 2px rgba(0, 0, 0, 0.75);
-}
-
-.ProfileImage {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-}
-
-.ProfileNew {
-  top: 15%;
-  right: 0;
+.Pointer {
   position: absolute;
-  font-size: large;
-  padding: 0 0.5rem;
-  background-color: mediumturquoise;
-  border: 1px solid mediumturquoise;
-  border-radius: 1rem;
-}
-
-.Avarta {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  text-align: center;
-  margin: 1.5rem;
-}
-
-/* ----------------- Count ---------------------------- */
-
-.CounterBox {
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  margin: 40px;
-  border: 2px black solid;
-  border-radius: 40px;
-  background-color: #ebebeb;
-}
-
-.CounterScore {
-  border: 2px black solid;
-  border-radius: 40px;
-  font-size: 30px;
-  width: 700px;
-  height: 60px;
-  text-align: center;
-  background-color: #fff;
-}
-
-.Counters {
-  display: flex;
-}
-
-.Counter {
-  border: solid Black 2px;
-  border-radius: 40px;
-  width: 300px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 40px;
-  background-color: #fff;
-}
-
-.CounterName {
-  margin-top: px;
-  margin-left: -170px;
-  font-size: 25px;
-  font-weight: bolder;
-  text-align: center;
-  padding: 5px;
-  border: black 2px solid;
-  border-radius: 40px;
-}
-
-.CounterNum {
-  font-size: 100px;
-  margin-top: px;
-}
-
-.CounterButton {
-  font-size: 30px;
-  border: solid black 2px;
-  border-radius: 10px;
-  background-color: bisque;
-  padding: 5px 10px;
-  margin: 50px
-}
-
-/* ----------------- Product ---------------------------- */
-
-.AppProductBox {
-  margin: 50px;
-  padding: 10px;
-  border: 2px black solid;
-  width: 500px;
-}
-
-.ToggleButton {
-  background-color: #efefef;
-  border: 2px black solid;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 30px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  top: -20px;
+  left: -20px;
 }
