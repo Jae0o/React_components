@@ -15,6 +15,7 @@ root.render(
     <AppMatch />
     {/* 중첩 Object와 onClick 심화 */}
     <AppScore />
+    {/* Array의 정리방법과 조건 연결 */}
   </React.StrictMode>
 );
 

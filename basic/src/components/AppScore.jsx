@@ -2,21 +2,41 @@ import React, { useState } from 'react'
 import '../Score.css'
 
 export default function AppScore() {
-    const [Score, setScore] = useState({
-        name: "student",
-        class: "4",
-        test: [{
-            testname: "Math",
-            Score: "50",
-            grade: "F"
-        },
-        {
-            testname: "English",
-            Score: "70",
-            grade: "C"
-        }]
+    const [Score, setScore] = useState(State)
 
-    })
+    const ChangeButton = () => {
+        const target = prompt('바꿀 과목을 적으세요.');
+        const TScore = prompt('점수를 새로 입력하십시요');
+        setScore((prev) => ({
+            ...prev,
+            test: prev.test.map((value) => {
+                if (value.testname === target) {
+                    return { ...value, Score: TScore }
+                };
+                return value;
+            })
+        }))
+    };
+
+    const AddButton = () => {
+        const testname = prompt("Test name ?");
+        const Score = prompt("What Score ?");
+        const grade = prompt("What grade ?");
+        setScore((item) => ({
+            ...item,
+            test: [...item.test, { testname, Score, grade: grade }]
+        }));
+    };
+
+    const DeleteButton = () => {
+        const deleteName = prompt("delete Test name");
+        setScore((e) => ({
+            ...e,
+            test: e.test.filter((item) =>
+                item.testname !== deleteName)
+        })
+        )
+    };
 
     return (
         <div className='ScoreBox'>
@@ -29,20 +49,31 @@ export default function AppScore() {
                 ))}
 
             </ul>
+
+            <button onClick={ChangeButton}> Chanege Test </button>
+
+            <button onClick={AddButton}> Add Test</button>
+
+            <button onClick={DeleteButton}>delete</button>
+
             <button onClick={() => {
-                const target = prompt('바꿀 과목을 적으세요.');
-                const TScore = prompt('점수를 새로 입력하십시요');
-                setScore((prev) => ({
-                    ...prev,
-                    test: prev.test.map((value) => {
-                        if (value.testname === target) {
-                            return { ...value, Score: TScore }
-                        };
-                        return value;
-                    })
-                }))
-            }}>
-                Change Math </button>
+                console.log(Score)
+            }}>Array 확인용 console.log</button>
         </div >
     )
 }
+
+const State = {
+    name: "student",
+    class: "4",
+    test: [{
+        testname: "Math",
+        Score: "50",
+        grade: "F"
+    },
+    {
+        testname: "English",
+        Score: "70",
+        grade: "C"
+    }]
+};
