@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import AppPointer from './components/AppPointer';
 import AppMatch from './components/AppMatch';
 import AppScore from './components/AppScore';
+import AppScoreUseReducer from './components/AppScoreUseReducer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +17,7 @@ root.render(
     {/* 중첩 Object와 onClick 심화 */}
     <AppScore />
     {/* Array의 정리방법과 조건 연결 */}
+    <AppScoreUseReducer />
   </React.StrictMode>
 );
 

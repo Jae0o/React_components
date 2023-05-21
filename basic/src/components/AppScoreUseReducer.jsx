@@ -1,48 +1,34 @@
-import React, { useState } from 'react'
-import '../Score.css'
+import React, { useReducer } from 'react'
+import ScoreButton from '../reducer/ScoreButton-reducer'
 
-export default function AppScore() {
-    const [Score, setScore] = useState(State);
+export default function AppScoreUseReducer() {
+    const [prev, dispatch] = useReducer(ScoreButton, State);
 
     const ChangeButton = () => {
-        const target = prompt('바꿀 과목을 적으세요.');
-        const TScore = prompt('점수를 새로 입력하십시요');
-        setScore((prev) => ({
-            ...prev,
-            test: prev.test.map((value) => {
-                if (value.testname === target) {
-                    return { ...value, Score: TScore }
-                };
-                return value;
-            })
-        }))
+        const testname = prompt('바꿀 과목을 적으세요.');
+        const Score = prompt('점수를 새로 입력하십시요');
+        dispatch({ type: 'Change', testname, Score });
     };
 
     const AddButton = () => {
         const testname = prompt("Test name ?");
         const Score = prompt("What Score ?");
         const grade = prompt("What grade ?");
-        setScore((item) => ({
-            ...item,
-            test: [...item.test, { testname, Score, grade: grade }]
-        }));
+        dispatch({ type: 'Add', testname, Score, grade });
+
     };
 
     const DeleteButton = () => {
         const deleteName = prompt("delete Test name");
-        setScore((e) => ({
-            ...e,
-            test: e.test.filter((item) =>
-                item.testname !== deleteName)
-        })
-        )
+        dispatch({ type: 'Delete', deleteName })
+
     };
 
     return (
         <div className='ScoreBox'>
-            <h1> Score Board </h1>
+            <h1> Use Reducer Score Board </h1>
             <ul className='ScoreList'>
-                {Score.test.map((test, id) => (
+                {prev.test.map((test, id) => (
                     <li key={id}>
                         {test.testname} : {test.Score} / Grade : {test.grade}
                     </li>
@@ -57,7 +43,7 @@ export default function AppScore() {
             <button onClick={DeleteButton}>delete</button>
 
             <button onClick={() => {
-                console.log(Score)
+                console.log(prev)
             }}>Array 확인용 console.log</button>
         </div >
     )
@@ -76,4 +62,4 @@ const State = {
         Score: "70",
         grade: "C"
     }]
-};
+}
