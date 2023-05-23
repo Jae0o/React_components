@@ -7,6 +7,7 @@ import AppMatch from './components/AppMatch';
 import AppScore from './components/AppScore';
 import AppScoreUseReducer from './components/AppScoreUseReducer';
 import AppUseImmer from './components/AppUseImmer';
+import AppForm from './components/AppForm';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,9 @@ root.render(
     <AppScoreUseReducer />
     {/* use Reducer */}
     <AppUseImmer />
+    {/* use Immer and install */}
+    <AppForm />
+    {/* React에서의 Form의 사용법 */}
   </React.StrictMode>
 );
 

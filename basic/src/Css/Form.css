@@ -1,0 +1,19 @@
+.FormBox {
+    margin: 20px;
+    padding: 20px;
+    border: 2px black solid;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.FormBox>label {
+    margin: 10px;
+}
+
+.FormBox>button {
+    font-size: large;
+    margin: 30px;
+}

@@ -1,6 +1,6 @@
 .ScoreBox {
     border: black 2px solid;
-    width: fit-content;
+    width: 400px;
     margin: 20px;
     padding: 20px;
     text-align: center;
