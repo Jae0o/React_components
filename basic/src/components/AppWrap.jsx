@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../Css/Wrap.css'
 
+
 export default function AppWrap() {
     return (
         <div className='BaseBox'>
@@ -13,6 +14,10 @@ export default function AppWrap() {
 
             <Wrap>
                 <AppMatch />
+            </Wrap>
+
+            <Wrap>
+                <h1>언제든 재사용!</h1>
             </Wrap>
         </div>
     )

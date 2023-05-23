@@ -1,0 +1,41 @@
+.Body {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    width: 1000px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Button {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.MainBox {
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid black;
+    width: 800px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SectionBox {
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid black;
+    width: 500px;
+    text-align: center;
+}
+
+.ArticleBox {
+    border: 2px solid black;
+
+}

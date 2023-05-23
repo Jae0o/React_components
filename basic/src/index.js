@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppWrap from './components/AppWrap';
+import AppDarkMode from './components/AppDarkMode';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -10,6 +11,8 @@ root.render(
   <React.StrictMode>
     <AppWrap />
     {/* Component의 재사용 tip */}
+    <AppDarkMode />
+    {/* Context 사용방법과 Context umbrella 만들기 */}
   </React.StrictMode>
 );
 
