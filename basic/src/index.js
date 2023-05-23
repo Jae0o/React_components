@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './Css/index.css';
 import reportWebVitals from './reportWebVitals';
 import AppPointer from './components/AppPointer';
 import AppMatch from './components/AppMatch';
 import AppScore from './components/AppScore';
 import AppScoreUseReducer from './components/AppScoreUseReducer';
+import AppUseImmer from './components/AppUseImmer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,6 +19,8 @@ root.render(
     <AppScore />
     {/* Array의 정리방법과 조건 연결 */}
     <AppScoreUseReducer />
+    {/* use Reducer */}
+    <AppUseImmer />
   </React.StrictMode>
 );
 

@@ -1,0 +1,21 @@
+.ImmerBox {
+    margin: 20px;
+    padding: 20px;
+    border: solid black 2px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImmerBox>p {
+    font-size: 25px;
+    margin: 10px;
+}
+
+.ImmerBox>button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+}

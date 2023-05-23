@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../Score.css'
+import '../Css/Score.css'
 
 export default function AppScore() {
     const [Score, setScore] = useState(State);

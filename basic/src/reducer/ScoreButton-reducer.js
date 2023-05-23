@@ -21,11 +21,10 @@ export default function ScoreButton(prev, action) {
             }
         }
         case 'Delete': {
-            const { deleteName } = action;
             return {
                 ...prev,
                 test: prev.test.filter((e) =>
-                    e.testname !== deleteName)
+                    e.testname !== action.deleteName)
             }
 
         }

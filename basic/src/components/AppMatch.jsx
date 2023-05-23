@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../Match.css'
+import '../Css/Match.css'
 
 export default function AppMatch() {
     const [Text, setText] = useState({
