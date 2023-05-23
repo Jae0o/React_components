@@ -1,0 +1,18 @@
+.BaseBox {
+    border: 2px black solid;
+    width: 800px;
+    height: 800px;
+}
+
+.Wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: fit-content;
+    height: fit-content;
+    background-color: beige;
+    border-radius: 10px;
+    padding: 10px;
+}
