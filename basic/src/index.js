@@ -4,18 +4,27 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppWrap from './components/AppWrap';
 import AppDarkMode from './components/AppDarkMode';
+import TestDocument from './components/TestDocument';
+import AppLoadingError from './components/AppLoadingError';
 // import AppPerformanceTest from './components/AppPerformanceTest';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppWrap />
-    {/* Component의 재사용 tip */}
+    <div className='Box'>
+      <AppWrap />
+      {/* Component의 재사용 tip */}
+      <TestDocument />
+    </div>
     <AppDarkMode />
     {/* Context 사용방법과 Context umbrella 만들기 */}
+
     {/* <AppPerformanceTest /> */}
     {/* 성능 개선 실험 */}
+
+    <AppLoadingError />
+
   </React.StrictMode>
 );
 

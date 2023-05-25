@@ -1,0 +1,9 @@
+.DocumentBox {
+    border: black 2px solid;
+    width: 500px;
+    height: 300px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

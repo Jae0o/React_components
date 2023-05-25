@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../Css/Wrap.css'
 
-
 export default function AppWrap() {
     return (
         <div className='BaseBox'>
