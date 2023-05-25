@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppWrap from './components/AppWrap';
 import AppDarkMode from './components/AppDarkMode';
+// import AppPerformanceTest from './components/AppPerformanceTest';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +14,8 @@ root.render(
     {/* Component의 재사용 tip */}
     <AppDarkMode />
     {/* Context 사용방법과 Context umbrella 만들기 */}
+    {/* <AppPerformanceTest /> */}
+    {/* 성능 개선 실험 */}
   </React.StrictMode>
 );
 
