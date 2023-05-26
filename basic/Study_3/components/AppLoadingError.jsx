@@ -18,11 +18,13 @@ export default function AppLoadingError() {
             .finally(() => setLoading(false))
     }, [State])
 
+
     if (Loading) return <p>Loading</p>;
     if (Error) return <p>{Error}</p>
 
     return (
         <div className='LoadingBox'>
+            <h2>Not Use Custom Hook</h2>
             <div>
                 <ul>
                     {Data.map((e) => (
