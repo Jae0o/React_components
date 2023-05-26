@@ -22,6 +22,9 @@ const PropertyButton = styled.button`
 
 const DivBox = styled.div`
     display: flex;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
     `
 
 export default function AppStyled() {
