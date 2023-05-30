@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import AppStyled from './components/AppStyled';
-import AppTailwind from './components/AppTailwind';
+
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppStyled />
-    <AppTailwind />
+
   </React.StrictMode>
 );
 

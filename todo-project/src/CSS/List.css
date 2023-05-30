@@ -1,0 +1,14 @@
+.List {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    height: 30px;
+    border: 2px red solid;
+}
+
+.List>div {
+    display: flex;
+    align-items: center;
+}
+
+.DeleteButton {}
