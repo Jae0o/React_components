@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import ToDo from './ToDo'
 import HeaderButton from './Button/HeaderButton';
 
-const state = ['all', 'active', 'completed']
+const Category = ['All', 'Active', 'Completed']
 export default function AppToDo() {
-    const [State, setState] = useState(state[0]);
+    const [State, setState] = useState(Category[0]);
+
     return (
         <div>
-            <HeaderButton State={State} />
-            <ToDo />
+            <HeaderButton State={Category} value={State} OnFilter={(e) => setState(e)} />
+            <ToDo FilterState={State} />
         </div>
     )
 }

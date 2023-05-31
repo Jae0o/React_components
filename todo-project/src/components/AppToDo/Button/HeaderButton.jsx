@@ -1,7 +1,18 @@
 import React from 'react'
 
-export default function HeaderButton({ state }) {
+export default function HeaderButton({ State, value, OnFilter }) {
+
     return (
-        <div>HeaderButton</div>
+        <header>
+            <ul>
+                {State.map((data, index) => (
+                    <li key={index}>
+                        <button onClick={() => OnFilter(data)}>
+                            {data}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </header>
     )
 }
