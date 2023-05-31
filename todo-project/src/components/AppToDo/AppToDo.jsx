@@ -1,10 +1,10 @@
 import React from 'react'
-import ToDoList from './List/ToDoList'
+import ToDo from './ToDo'
 
 export default function AppToDo() {
     return (
         <div>
-            <ToDoList />
+            <ToDo />
         </div>
     )
 }
