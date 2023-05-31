@@ -4,24 +4,31 @@ import AddButton from './Button/AddButton';
 
 
 
-const Things = [{
-    key: "nobody",
-    work: "할일 저장소",
-    state: "active"
-}]
+const Things = [
+    { id: "1", work: "할일 저장소", state: "active" },
+    { id: "2", work: "To Do", state: "active" },
+]
 
 export default function ToDo() {
     const [List, setList] = useState(Things);
 
     const AddHandle = (data) => { setList([...List, data]) }
 
+    const DeleteHandle = (data) => {
+        setList(
+            List.filter((e) => e.id !== data)
+        )
+    }
+
     console.log(List)
     return (
         <div>
             <ul>
-                {List.map((data) => (
-                    <DoList key={data.key} work={data.work} />
-                ))}
+                {List.map((data) => {
+                    return (
+                        <DoList key={data.id} data={data} OnDelete={DeleteHandle} />
+                    )
+                })}
             </ul>
             <AddButton OnAdd={AddHandle} />
         </div>

@@ -4,16 +4,17 @@ import { v1 as uudiv1 } from 'uuid';
 export default function AddButton({ OnAdd }) {
     const [Text, setText] = useState('');
 
+    const onEventText = (e) => setText(e.target.value);
     const OnClick = (e) => {
         e.preventDefault();
-        OnAdd({ Key: uudiv1(), work: Text, state: 'active' });
+        OnAdd({ id: uudiv1(), work: Text, state: 'active' });
     }
 
     return (
-        <form>
+        <form onSubmit={OnClick}>
             <input type='text' value={Text}
-                onChange={(e) => setText(e.target.value)} />
-            <button onClick={OnClick}>+</button>
+                onChange={onEventText} />
+            <button>+</button>
         </form>
     )
 }
