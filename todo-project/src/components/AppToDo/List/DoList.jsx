@@ -12,17 +12,20 @@ export default function DoList({ data, OnDelete, OnUpdate }) {
     };
 
     return (
-        <li>
+        <li className='List'>
+            <div className='InputBox'>
+                <input className='CheckBoxInput'
+                    type='checkbox'
+                    id={data.id}
+                    checked={data.state === "Completed"}
+                    onChange={UpdateButton} />
+                <label className='checkBox' htmlFor={data.id}></label>
+                <label htmlFor={data.id}>{data.work}</label>
+            </div>
 
-            <input
-                type='checkbox'
-                id={data.id}
-                checked={data.state === "Completed"}
-                onChange={UpdateButton} />
 
-            <label htmlFor={data.id}>{data.work}</label>
-
-            <button onClick={DeleteButton}><FaTrashAlt /></button>
+            <button className='TrashButton'
+                onClick={DeleteButton}><FaTrashAlt /></button>
 
         </li>
     )

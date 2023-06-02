@@ -25,8 +25,8 @@ export default function ToDo({ FilterState }) {
     const Filtered = OnFilter(List, FilterState);
 
     return (
-        <div>
-            <ul>
+        <div className='MainBox'>
+            <ul className='ListBox'>
                 {Filtered.map((data) => {
                     return (<DoList key={data.id} data={data} OnDelete={DeleteHandle} OnUpdate={UpdataHandle} />)
                 })}

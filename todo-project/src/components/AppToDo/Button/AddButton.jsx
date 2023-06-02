@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { v1 as uudiv1 } from 'uuid';
+import { MdOutlinePostAdd } from 'react-icons/md'
 
 export default function AddButton({ OnAdd }) {
     const [Text, setText] = useState("");
@@ -16,10 +17,10 @@ export default function AddButton({ OnAdd }) {
     };
 
     return (
-        <form onSubmit={OnClick}>
+        <form className='AddBox' onSubmit={OnClick}>
             <input type='text' value={Text}
                 onChange={onEventText} />
-            <button>+</button>
+            <button><MdOutlinePostAdd /></button>
         </form>
     )
 }

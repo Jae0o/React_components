@@ -4,7 +4,7 @@ export default function HeaderButton({ State, value, OnFilter }) {
 
     return (
         <header>
-            <ul>
+            <ul className='ButtonMenu'>
                 {State.map((data, index) => (
                     <li key={index}>
                         <button onClick={() => OnFilter(data)}>
