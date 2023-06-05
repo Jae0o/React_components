@@ -1,26 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DoList from './List/DoList';
 import AddButton from './Button/AddButton';
 
-const Things = [
-    { id: "1", work: "할일 저장소", state: "Active" },
-    { id: "2", work: "To Do", state: "Active" },
-];
+function localStorageData() {
+    const data = localStorage.getItem('List')
+    return data ? JSON.parse(data) : [];
+};
 
 export default function ToDo({ FilterState }) {
-    const [List, setList] = useState(Things);
+    const [List, setList] = useState(() => localStorageData());
 
+
+    // filter
+    function OnFilter(List, Filter) {
+        if (Filter === "All") {
+            return List;
+        }
+        return List.filter(list => list.state === Filter);
+    };
+    // Update Function
     const AddHandle = (data) => { setList([...List, data]) };
-
     const DeleteHandle = (data) => {
         setList(
             List.filter((e) => e.id !== data)
         )
     };
-
     const UpdataHandle = (data) => {
         setList(List.map((list) => list.id === data.id ? data : list))
     };
+
+    useEffect(() => {
+        localStorage.setItem('List', JSON.stringify(List))
+    }, [List]);
 
     const Filtered = OnFilter(List, FilterState);
 
@@ -34,11 +45,4 @@ export default function ToDo({ FilterState }) {
             <AddButton OnAdd={AddHandle} />
         </div>
     )
-};
-
-function OnFilter(List, Filter) {
-    if (Filter === "All") {
-        return List;
-    }
-    return List.filter(list => list.state === Filter);
 };

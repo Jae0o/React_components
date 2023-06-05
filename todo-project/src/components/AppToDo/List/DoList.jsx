@@ -7,7 +7,6 @@ export default function DoList({ data, OnDelete, OnUpdate }) {
 
     const UpdateButton = (e) => {
         const state = e.target.checked ? "Completed" : "Active";
-        console.log(e);
         OnUpdate({ ...data, state: state });
     };
 

@@ -11,6 +11,13 @@
     --Color-white-semi: #EDF1D6;
 }
 
+html.dark {
+    --Color-Green-Deep: #9DC08B;
+    --Color-Green-nature: #609966;
+    --Color-Green-semi: #9DC08B;
+    --Color-white-semi: #40513B;
+}
+
 
 ul {
     list-style: none;
@@ -54,10 +61,10 @@ header {
     width: fit-content;
 }
 
-.ButtonMenu>li>button {
+.HeaderButton {
     border-style: none;
     width: 100px;
-    height: 35px;
+    height: 32px;
     background-color: var(--Color-Green-Deep);
     color: var(--Color-white-semi);
     font-size: medium;
@@ -66,8 +73,14 @@ header {
     border-radius: var(--border-radius-samll);
 }
 
-.ButtonMenu>li>button:hover {
-    background-color: var(--Color-Green-nature);
+.HeaderButton:hover {
+    border-bottom: #609966 3px solid;
+    border-radius: 0px;
+}
+
+.selected {
+    border-bottom: #609966 3px solid;
+    border-radius: 0px;
 }
 
 .MainBox {
