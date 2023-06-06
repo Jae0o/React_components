@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 import { v1 as uuidV1 } from 'uuid';
-import AddCatogoryList from './AddCatogoryList';
+import AddDopDownList from './AddDorpDownList';
 
 
 
-export default function AddListButton({ UpdateList }) {
+export default function AddListButton({ UpdateList, PushDay, DayList }) {
 
     // ---------------------------------------- State 
     const [Todo, setTodo] = useState('');
+
     const [Location, setLocation] = useState('');
-    const [Day, setDay] = useState('1');
+    const [LocationList, setLocationList] = useState(DefaultLocationList);
+
     const [Time, setTime] = useState('00:00');
+
+    const [Day, setDay] = useState('1');
+
     const [Category, setCategory] = useState('Tour');
     const [CategoryList, setCategoryList] = useState(DefaultCategoryList);
+
     // ---------------------------------------- Update Function
     const UpdateTodo = (e) => {
         setTodo(e);
@@ -28,7 +34,6 @@ export default function AddListButton({ UpdateList }) {
     }
     const UpdateCategory = (e) => {
         setCategory(e);
-        console.log(Category)
     }
 
     // ---------------------------------------- ADD UpdateList Props Function
@@ -38,25 +43,37 @@ export default function AddListButton({ UpdateList }) {
         if (Todo.trim().length === 0) {
             return alert(" Todo 에 할일을 적으세요");
         }
-        console.log(
+        UpdateList(
             {
                 id: uuidV1(),
                 Day: Day,
                 Todo: Todo.trim(),
                 Time: Time,
                 Location: Location,
-                Category: "Home"
+                Category: Category
             }
         )
     }
+    // ---------------------------------------- Add Day Function
 
-    // ---------------------------------------- AddCategory Function
+
+    // ---------------------------------------- Add Location Function
+
+    const UpdateLocationFunction = (SaveData) => {
+        if (!LocationList.some((e) => e.Location === SaveData.trim())) {
+            setLocationList([...LocationList, { id: uuidV1(), Location: SaveData }])
+        } else {
+            alert("리스트에 동일한 Location이 존재합니다")
+        }
+    };
+
+    // ---------------------------------------- Add Category Function
 
     const UpdateCategoryFcuntion = (SaveData) => {
         if (!CategoryList.some((e) => e.category === SaveData.trim())) {
             setCategoryList([...CategoryList, { id: uuidV1(), category: SaveData.trim() }])
         } else {
-            alert("동일한 Category가 존재합니다.");
+            alert("리스트에 동일한 Category가 존재합니다.");
         }
     };
 
@@ -69,21 +86,27 @@ export default function AddListButton({ UpdateList }) {
                 <div>
                     <label htmlFor='DayInput'>Day : </label>
                     <select id="DayInput" onChange={(e) => UpdateDay(e.target.value)}>
-                        <option value="1"> 1 Day</option>
-                        <option value="2"> 2 Day</option>
-                        <option value="3"> 3 Day</option>
-                        <option value="4"> 4 Day</option>
+                        {DayList.map((Day) => (
+                            <option key={Day.id} value={Day.Day}>
+                                {Day.Day}</option>
+                        ))}
                     </select>
                 </div>
                 {/* 이름 예정 style.TimeInput */}
                 <div>
-                    <label>Time : </label>
-                    <input type='time' value={Time} onChange={(e) => UpdateTime(e.target.value)} />
+                    <label htmlFor='TimeInput'>Time : </label>
+                    <input type='time' id="TimeInput" value={Time} onChange={(e) => UpdateTime(e.target.value)} />
                 </div>
 
                 <div>
                     <label htmlFor="LocationInput">Location</label>
-                    <input id="LocationInput" type='text' onChange={(e) => UpdateLocation(e.target.value)} />
+                    <select id="LocationInput" onChange={(e) => UpdateLocation(e.target.value)}>
+                        {LocationList.map((location) => (
+                            <option key={location.id} value={location.Location}>
+                                {location.Location}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 <div>
@@ -104,7 +127,15 @@ export default function AddListButton({ UpdateList }) {
                 <button> ADD </button>
             </form>
 
-            <AddCatogoryList UpdateFunction={(e) => UpdateCategoryFcuntion(e)} List={CategoryList} />
+            <div>
+                <p> 따로 옵션창 분류해서 만들 예정</p>
+                {/* Day */}
+                <AddDopDownList UploadFunction={(e) => PushDay(e)} name={"Day"} />
+                {/* Category */}
+                <AddDopDownList UploadFunction={(e) => UpdateCategoryFcuntion(e)} name={"Category"} />
+                {/* Location */}
+                <AddDopDownList UploadFunction={UpdateLocationFunction} name={"Location"} />
+            </div>
         </div>
 
     )
@@ -114,14 +145,13 @@ export default function AddListButton({ UpdateList }) {
 const DefaultCategoryList = [
     {
         id: 1,
-        category: "Tour"
-    },
-    {
-        id: 2,
-        category: "Activity"
-    },
-    {
-        id: 3,
-        category: "Home"
+        category: "카테고리 입력"
     }
 ];
+
+const DefaultLocationList = [
+    {
+        id: 1,
+        Location: "장소 입력"
+    }
+]
