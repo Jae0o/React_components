@@ -8,14 +8,14 @@ import { MdOutlineDownloadDone } from 'react-icons/md'
 export default function AddListButton({
   UpdateList,
   PushDay, DayList, DeleteDay,
-  PushCategory, CategoryList, DeleteCategory
+  PushCategory, CategoryList, DeleteCategory,
+  PushLocation, LocationList, DeleteLocation
 }) {
 
   // ---------------------------------------- State 
   const [Todo, setTodo] = useState('');
 
   const [Location, setLocation] = useState('');
-  const [LocationList, setLocationList] = useState(DefaultLocationList);
 
   const [StartTime, setStartTime] = useState('00:00');
   const [EndTime, setEndTime] = useState('00:00');
@@ -69,25 +69,6 @@ export default function AddListButton({
         Etc: Etc.trim()
       }
     )
-  }
-
-  // ---------------------------------------- Add Delete Location Function
-
-  const UpdateLocationFunction = (SaveData) => {
-    if (!LocationList.some((e) => e.Location === SaveData)) {
-      setLocationList([...LocationList, { id: uuidV1(), Location: SaveData }])
-    } else {
-      alert("리스트에 동일한 Location이 존재합니다")
-    }
-  };
-
-  const DeleteLocation = (e) => {
-    if (LocationList.some((local) => local.Location === e)) {
-      const filter = LocationList.filter((local) => local.Location !== e);
-      setLocationList([...filter]);
-    } else {
-      alert("리스트에 일치하는 항목이 없습니다.")
-    }
   }
 
   // ---------------------------------------- Return
@@ -160,16 +141,9 @@ export default function AddListButton({
         {/* Category */}
         <AddDropDownList UploadFunction={(e) => PushCategory(e.trim())} name={"Category"} DeleteFunction={(e) => DeleteCategory(e.trim())} />
         {/* Location */}
-        <AddDropDownList UploadFunction={(e) => UpdateLocationFunction(e.trim())} name={"Location"} DeleteFunction={(e) => DeleteLocation(e.trim())} />
+        <AddDropDownList UploadFunction={(e) => PushLocation(e.trim())} name={"Location"} DeleteFunction={(e) => DeleteLocation(e.trim())} />
       </div>
     </div>
 
   )
-}
-
-const DefaultLocationList = [
-  {
-    id: "Default key",
-    Location: "장소 입력"
-  }
-]
+};

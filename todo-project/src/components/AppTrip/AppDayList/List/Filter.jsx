@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function CategoryFilter({ FilterCategoryList, UpDateCheckBox, CheckList }) {
+export default function Filter({ FilterList, UpDateCheckBox, CheckList, name }) {
   return (
     <form >
-      {FilterCategoryList.map((list, index) => {
+      <p>{name}</p>
+      {FilterList.map((list, index) => {
         return (
           <div key={index}>
             <input
