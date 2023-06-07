@@ -10,6 +10,8 @@ export default function AppDayList() {
 
     const [DayList, setDayList] = useState(DefaultDaylist);
 
+
+    // ----- Add Day DropDown List Handler
     const UpdateDayFunction = (SaveDay) => {
         if (!DayList.some((e) => e.Day === SaveDay)) {
             setDayList([...DayList, { id: uuidV1(), Day: SaveDay }])
@@ -18,6 +20,7 @@ export default function AppDayList() {
         }
     };
 
+    // ----- Delete Day DropDown List Handler
     const DeleteDay = (e) => {
         if (DayList.some((day) => day.Day === e)) {
             const filter = DayList.filter((day) => day.Day !== e);
@@ -32,8 +35,9 @@ export default function AppDayList() {
 
 
     const [CategoryList, setCategoryList] = useState(DefaultCategoryList);
-    const [FilterCategoryList, setFilterCategoryList] = useState(DefaultFilter)
+    const [FilterCategoryList, setFilterCategoryList] = useState(DefaultFilter);
 
+    // ----- Add  Category DropDown List Handler
     const UpdateCategoryFcuntion = (SaveData) => {
         if (!CategoryList.some((e) => e.category === SaveData.trim())) {
             setCategoryList([...CategoryList, { id: uuidV1(), category: SaveData.trim() }])
@@ -43,6 +47,7 @@ export default function AppDayList() {
         }
     };
 
+    // ----- Delete Category DropDown List Handler
     const DeleteCategory = (e) => {
         if (CategoryList.some((cate) => cate.category === e.trim())) {
             const filter = CategoryList.filter((cate) => cate.category !== e.trim());
@@ -53,7 +58,6 @@ export default function AppDayList() {
             alert("리스트에 일치하는 항목이 없습니다.")
         }
     }
-    //  filter
 
 
     // ------------------------------------ List
@@ -62,7 +66,6 @@ export default function AppDayList() {
     const [List, setList] = useState(TripList);
 
     const AddList = (e) => { setList([...List, e]); }
-
     const DeleteList = (e) => {
         const Filter = List.filter((list) => list.id !== e);
         setList([...Filter]);
@@ -73,7 +76,7 @@ export default function AppDayList() {
 
     return (
         <article>
-            <DayBoxList list={List} UploadDelete={DeleteList} DayList={DayList} CategoryList={FilterCategoryList} />
+            <DayBoxList list={List} UploadDelete={DeleteList} DayList={DayList} FilterCategoryList={FilterCategoryList} />
             <AddListButton UpdateList={AddList}
                 // Day Props
                 PushDay={UpdateDayFunction} DayList={DayList} DeleteDay={DeleteDay}
@@ -94,7 +97,7 @@ const TripList = [{
     EndTime: "17:00",
     Location: "장소",
     Category: "Tour",
-    Etc: "기타.."
+    Etc: "기타 등등..."
 }];
 
 const DefaultDaylist = [
@@ -122,4 +125,4 @@ const DefaultCategoryList = [
     },
 ];
 
-const DefaultFilter = ["All", "Tour", "Activity"]
+const DefaultFilter = ["Tour", "Activity"]

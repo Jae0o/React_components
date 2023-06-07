@@ -6,31 +6,33 @@ import { MdOutlineAccessTimeFilled } from 'react-icons/md'
 import CategoryFilter from './CategoryFilter'
 
 
-export default function DayBoxList({
-  list, UploadDelete,
-  DayList, CategoryList }) {
-  const [FilterValue, setFilterValue] = useState(CategoryList[0]);
+export default function DayBoxList({ list, UploadDelete, DayList, FilterCategoryList }) {
+
   const FilteredDayList = DayList.filter((e) => e.id !== "Default key");
 
-  const CategoryfilterButton = (e) => {
-    setFilterValue(e);
-  }
+  // ================= Cateogry Filter
+  const [CheckList, setCheckList] = useState([]);
 
+  const UpDateCheckBox = (e, data) => {
+    const Text = `${data}`;
+    e.target.checked ?
+      setCheckList(CheckList.concat([Text])) :
+      setCheckList(CheckList.filter((list) => list !== data));
+  };
+
+  // ======================
   return (
     <div>
-      <CategoryFilter
-        CategoryList={CategoryList} FilterFunction={CategoryfilterButton}
-        FilterValue={FilterValue}
-      />
+      {/* Category Filter 구역 */}
+      <CategoryFilter FilterCategoryList={FilterCategoryList} UpDateCheckBox={UpDateCheckBox} CheckList={CheckList} />
 
+      {/* Day 기준 list 구역 */}
       {FilteredDayList.map((daylist) => {
         // Day 기준의 filter
         const DayFilter = list.filter((e) => e.Day === daylist.Day)
         // Category 기준의 filter
-        const Filtered = OnFilter(DayFilter, FilterValue);
+        const Filtered = OnFilter(DayFilter, CheckList);
 
-
-        console.log(Filtered);
         return (
           <ul key={daylist.id}>
             <h1><BsFillCalendar2DayFill /> {daylist.Day} </h1>
@@ -53,10 +55,10 @@ export default function DayBoxList({
 };
 
 function OnFilter(DefaultList, State) {
-  if (State === "All") {
+  if (State.length === 0) {
     return DefaultList;
   }
-  return DefaultList.filter((list) => list.Category === State);
+  return DefaultList.filter((data) => State.includes(data.Category))
 };
 
 

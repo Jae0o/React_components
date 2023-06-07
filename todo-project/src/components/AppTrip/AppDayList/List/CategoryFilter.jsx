@@ -1,16 +1,26 @@
 import React from 'react'
 
-export default function CategoryFilter({ CategoryList, FilterFunction }) {
-
+export default function CategoryFilter({ FilterCategoryList, UpDateCheckBox, CheckList }) {
   return (
-    <div>
-      {CategoryList.map((value, index) => {
+    <form >
+      {FilterCategoryList.map((list, index) => {
         return (
-          <button key={index} onClick={() => FilterFunction(value)}>
-            {value}
-          </button>
+          <div key={index}>
+            <input
+              id={list}
+              type='checkbox'
+              checked={CheckList.includes(list)}
+              onChange={(e) => {
+                UpDateCheckBox(e, list.trim())
+              }}
+            />
+
+            <label htmlFor={list}>{list}</label>
+          </div>
+
         )
       })}
-    </div>
+    </form>
+
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { v1 as uuidV1 } from 'uuid';
-import AddDopDownList from './AddDorpDownList';
+import AddDropDownList from './AddDropDownList';
 import { MdOutlineDownloadDone } from 'react-icons/md'
 
 
@@ -30,27 +30,25 @@ export default function AddListButton({
   // ---------------------------------------- Update Function
   const UpdateTodo = (e) => {
     setTodo(e);
-  }
+  };
   const UpdateLocation = (e) => {
-    console.log(e)
-    setLocation(e);
-  }
+    e === "장소 입력" ? setLocation("") : setLocation(e);
+  };
   const UpdateDay = (e) => {
     setDay(e)
-  }
+  };
   const UpdateStartTime = (e) => {
     setStartTime(e);
-  }
+  };
   const UpdateEndTime = (e) => {
     setEndTime(e);
-  }
+  };
   const UpdateCategory = (e) => {
-    setCategory(e);
-  }
+    e === "카테고리 입력" ? setCategory("") : setCategory(e)
+  };
   const UpdateEtc = (e) => {
     setEtc(e);
-    console.log(Etc)
-  }
+  };
 
   // ---------------------------------------- ADD UpdateList Props Function
 
@@ -59,8 +57,6 @@ export default function AddListButton({
     if (Todo.trim().length === 0) {
       return alert(" Todo 에 할일을 적으세요");
     };
-
-
     UpdateList(
       {
         id: uuidV1(),
@@ -78,7 +74,7 @@ export default function AddListButton({
   // ---------------------------------------- Add Delete Location Function
 
   const UpdateLocationFunction = (SaveData) => {
-    if (!LocationList.some((e) => e.Location === SaveData.trim())) {
+    if (!LocationList.some((e) => e.Location === SaveData)) {
       setLocationList([...LocationList, { id: uuidV1(), Location: SaveData }])
     } else {
       alert("리스트에 동일한 Location이 존재합니다")
@@ -160,11 +156,11 @@ export default function AddListButton({
       <div>
         <p> 따로 옵션창 분류해서 만들 예정</p>
         {/* Day */}
-        <AddDopDownList UploadFunction={(e) => PushDay(e.trim())} name={"Day"} DeleteFunction={(e) => DeleteDay(e.trim())} />
+        <AddDropDownList UploadFunction={(e) => PushDay(e.trim())} name={"Day"} DeleteFunction={(e) => DeleteDay(e.trim())} />
         {/* Category */}
-        <AddDopDownList UploadFunction={(e) => PushCategory(e.trim())} name={"Category"} DeleteFunction={(e) => DeleteCategory(e.trim())} />
+        <AddDropDownList UploadFunction={(e) => PushCategory(e.trim())} name={"Category"} DeleteFunction={(e) => DeleteCategory(e.trim())} />
         {/* Location */}
-        <AddDopDownList UploadFunction={(e) => UpdateLocationFunction(e.trim())} name={"Location"} DeleteFunction={(e) => DeleteLocation(e.trim())} />
+        <AddDropDownList UploadFunction={(e) => UpdateLocationFunction(e.trim())} name={"Location"} DeleteFunction={(e) => DeleteLocation(e.trim())} />
       </div>
     </div>
 
