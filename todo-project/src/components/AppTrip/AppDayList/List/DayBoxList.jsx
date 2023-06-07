@@ -4,6 +4,7 @@ import { BsFillCalendar2DayFill, BsPinMapFill } from 'react-icons/bs'
 import { TiThList } from 'react-icons/ti'
 import { MdOutlineAccessTimeFilled } from 'react-icons/md'
 import Filter from './Filter'
+import styles from '../../../../CSS/Planner/DayBoxList.module.css'
 
 
 export default function DayBoxList({ list, UploadDelete, DayList, FilterCategoryList, FilterLocationList }) {
@@ -30,37 +31,37 @@ export default function DayBoxList({ list, UploadDelete, DayList, FilterCategory
 
   // ======================
   return (
-    <div>
+    <div className={styles.MainBox}>
       {/* Filter 구역 */}
-      <div>
+      <div className={styles.FilterBox}>
         <Filter name={"Category"} FilterList={FilterCategoryList} UpDateCheckBox={UpDateCategoryCheckBox} CheckList={CategoryCheckList} />
         <Filter name={"Location"} FilterList={FilterLocationList} UpDateCheckBox={UpDateLocationCheckBox} CheckList={LocationCheckList} />
       </div>
+      <div className={styles.DayBox}>
+        {/* Day 기준 list 구역 */}
+        {FilteredDayList.map((daylist) => {
+          // Day 기준의 filter
+          const DayFilter = list.filter((e) => e.Day === daylist.Day)
+          // Category 기준의 filter
+          const Filtered = OnFilter(DayFilter, CategoryCheckList, LocationCheckList);
 
-      {/* Day 기준 list 구역 */}
-      {FilteredDayList.map((daylist) => {
-        // Day 기준의 filter
-        const DayFilter = list.filter((e) => e.Day === daylist.Day)
-        // Category 기준의 filter
-        const Filtered = OnFilter(DayFilter, CategoryCheckList, LocationCheckList);
-
-        return (
-          <ul key={daylist.id}>
-            <h1><BsFillCalendar2DayFill /> {daylist.Day} </h1>
-
-            {/* List 맵핑 */}
-            {Filtered.map((value) => (
-              <li key={value.id}>
-                <p><TiThList /> : {value.Category}</p>
-                <p><BsPinMapFill /> : {value.Location}</p>
-                <p><MdOutlineAccessTimeFilled />{value.StartTime} {value.EndTime}</p>
-                <p>{value.Todo}</p>
-                {value.Etc && <p>{value.Etc}</p>}
-                <button onClick={() => UploadDelete(value.id)}><FaTrashAlt /></button>
-              </li>
-            ))}
-          </ul>)
-      })}
+          return (
+            <ul key={daylist.id} >
+              <h1><BsFillCalendar2DayFill /> {daylist.Day} </h1>
+              {/* List 맵핑 */}
+              {Filtered.map((value) => (
+                <li key={value.id}>
+                  <p><TiThList /> : {value.Category}</p>
+                  <p><BsPinMapFill /> : {value.Location}</p>
+                  <p><MdOutlineAccessTimeFilled />{value.StartTime} {value.EndTime}</p>
+                  <p>{value.Todo}</p>
+                  {value.Etc && <p>{value.Etc}</p>}
+                  <button onClick={() => UploadDelete(value.id)}><FaTrashAlt /></button>
+                </li>
+              ))}
+            </ul>)
+        })}
+      </div>
     </div>
   )
 };
@@ -77,6 +78,3 @@ function OnFilter(DefaultList, Category, Location) {
     return Base.filter((data) => Location.includes(data.Location));
   };
 };
-
-
-// return DefaultList.filter((data) => Location.includes(data.Location))

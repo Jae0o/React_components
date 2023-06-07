@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { v1 as uuidV1 } from 'uuid';
 import AddDropDownList from './AddDropDownList';
-import { MdOutlineDownloadDone } from 'react-icons/md'
+import { MdOutlineDownloadDone } from 'react-icons/md';
+import styles from '../../../../CSS/Planner/AddListButton.module.css'
 
 
 
@@ -74,7 +75,7 @@ export default function AddListButton({
   // ---------------------------------------- Return
 
   return (
-    <div>
+    <div className={styles.MainBox}>
       <form onSubmit={OnSubmit}>
         {/* 이름 예정 style.DayInput */}
         <div>

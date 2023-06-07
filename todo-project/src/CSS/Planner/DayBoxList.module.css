@@ -1,0 +1,13 @@
+.MainBox {
+  height: 500px;
+
+  border: 2px red solid;
+}
+
+.FilterBox {
+  display: flex;
+}
+
+.DayBox {
+  display: flex;
+}

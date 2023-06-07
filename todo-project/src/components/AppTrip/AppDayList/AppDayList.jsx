@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import DayBoxList from './List/DayBoxList';
 import AddListButton from './List/AddListButton';
 import { v1 as uuidV1 } from 'uuid';
+import styles from "../../../CSS/Planner/AppDayList.module.css";
 
 
 export default function AppDayList() {
@@ -28,7 +29,7 @@ export default function AppDayList() {
     } else {
       alert("리스트에 일치하는 항목이 없습니다.")
     }
-  }
+  };
 
 
   // ------------------------------------ Category
@@ -57,7 +58,7 @@ export default function AppDayList() {
     } else {
       alert("리스트에 일치하는 항목이 없습니다.")
     }
-  }
+  };
 
   // ------------------------------------ Location
 
@@ -86,7 +87,7 @@ export default function AppDayList() {
     } else {
       alert("리스트에 일치하는 항목이 없습니다.")
     }
-  }
+  };
 
   // ------------------------------------ List
 
@@ -97,13 +98,13 @@ export default function AppDayList() {
   const DeleteList = (e) => {
     const Filter = List.filter((list) => list.id !== e);
     setList([...Filter]);
-  }
+  };
 
 
   // ------------------------------------- Return
 
   return (
-    <article>
+    <article className={styles.MainBox}>
       <DayBoxList list={List} UploadDelete={DeleteList} DayList={DayList}
         FilterCategoryList={FilterCategoryList} FilterLocationList={FilterLocationList} />
       <AddListButton UpdateList={AddList}
@@ -172,6 +173,6 @@ const DefaultLocationList = [
     id: "2",
     Location: "test2"
   }
-]
+];
 
 const DefaultLocation = ["test1", "test2"]
