@@ -105,8 +105,6 @@ export default function AppDayList() {
 
   return (
     <article className={styles.MainBox}>
-      <DayBoxList list={List} UploadDelete={DeleteList} DayList={DayList}
-        FilterCategoryList={FilterCategoryList} FilterLocationList={FilterLocationList} />
       <AddListButton UpdateList={AddList}
         // Day Props
         PushDay={UpdateDayFunction} DayList={DayList} DeleteDay={DeleteDay}
@@ -115,6 +113,11 @@ export default function AppDayList() {
         // Location Props
         PushLocation={UpdateLocationFunction} LocationList={LocationList} DeleteLocation={DeleteLocation}
       />
+
+      <div className={styles.CutLine}></div>
+
+      <DayBoxList list={List} UploadDelete={DeleteList} DayList={DayList}
+        FilterCategoryList={FilterCategoryList} FilterLocationList={FilterLocationList} />
     </article>
   )
 };

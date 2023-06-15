@@ -32,11 +32,16 @@ export default function DayBoxList({ list, UploadDelete, DayList, FilterCategory
   // ======================
   return (
     <div className={styles.MainBox}>
+
       {/* Filter 구역 */}
       <div className={styles.FilterBox}>
         <Filter name={"Category"} FilterList={FilterCategoryList} UpDateCheckBox={UpDateCategoryCheckBox} CheckList={CategoryCheckList} />
         <Filter name={"Location"} FilterList={FilterLocationList} UpDateCheckBox={UpDateLocationCheckBox} CheckList={LocationCheckList} />
       </div>
+
+      {/* 구분선 */}
+      <div className={styles.CutLine}></div>
+
       <div className={styles.DayBox}>
         {/* Day 기준 list 구역 */}
         {FilteredDayList.map((daylist) => {
@@ -46,17 +51,25 @@ export default function DayBoxList({ list, UploadDelete, DayList, FilterCategory
           const Filtered = OnFilter(DayFilter, CategoryCheckList, LocationCheckList);
 
           return (
-            <ul key={daylist.id} >
-              <h1><BsFillCalendar2DayFill /> {daylist.Day} </h1>
+            <ul key={daylist.id} className={styles.DayListBox}>
+              <p className={styles.DayTitle}><BsFillCalendar2DayFill />{daylist.Day} </p>
               {/* List 맵핑 */}
               {Filtered.map((value) => (
-                <li key={value.id}>
-                  <p><TiThList /> : {value.Category}</p>
-                  <p><BsPinMapFill /> : {value.Location}</p>
-                  <p><MdOutlineAccessTimeFilled />{value.StartTime} {value.EndTime}</p>
-                  <p>{value.Todo}</p>
-                  {value.Etc && <p>{value.Etc}</p>}
-                  <button onClick={() => UploadDelete(value.id)}><FaTrashAlt /></button>
+                <li key={value.id} className={styles.ListBox}>
+
+                  <div className={styles.ListTop}>
+                    <p className={styles.Category}><TiThList /> : {value.Category}</p>
+                    {value.Location && <p className={styles.Location}><BsPinMapFill /> : {value.Location}</p>}
+                  </div>
+
+                  <div className={styles.ListBottom}>
+                    <p className={styles.Time}><MdOutlineAccessTimeFilled />{value.StartTime} ~ {value.EndTime}</p>
+                    <button onClick={() => UploadDelete(value.id)}><FaTrashAlt /></button>
+                  </div>
+
+                  <p className={styles.Todo}>{value.Todo}</p>
+
+                  {value.Etc && <p className={styles.Etc}> Etc : {value.Etc}</p>}
                 </li>
               ))}
             </ul>)

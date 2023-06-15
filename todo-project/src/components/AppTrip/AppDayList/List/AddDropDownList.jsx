@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../../../../CSS/Planner/AddDropDownList.module.css'
 
 export default function AddDropDownList({ UploadFunction, name, DeleteFunction }) {
 
@@ -14,8 +15,8 @@ export default function AddDropDownList({ UploadFunction, name, DeleteFunction }
 
 
   return (
-    <div>
-      <button
+    <div className={styles.MainBox}>
+      <button className={styles.Button}
         onClick={() => {
           const ADDdata = prompt(`리스트에 추가할 ${name} 을(를) 입력하세요.`);
           // prompt 는 기본적으로 취소를 하면 null을 반환하기때문에 null 추가 방지용
@@ -25,7 +26,7 @@ export default function AddDropDownList({ UploadFunction, name, DeleteFunction }
           OnAdd(` ${ADDdata}`);
         }}>{name} 추가</button>
 
-      <button
+      <button className={styles.Button}
         onClick={() => {
           const DeleteData = prompt(`리스트에서 제거할 ${name} 을(를) 입력하세요.`);
           if (DeleteData === null) {

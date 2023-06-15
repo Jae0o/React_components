@@ -1,14 +1,16 @@
 import React from 'react'
+import styles from '../../../../CSS/Planner/Filter.module.css'
 
 export default function Filter({ FilterList, UpDateCheckBox, CheckList, name }) {
   return (
-    <form >
-      <p>{name}</p>
+    <form className={styles.MainBox}>
+      <p className={styles.Title}>{name}</p>
       {FilterList.map((list, index) => {
         return (
-          <div key={index}>
+          <div key={index} className={styles.ItemBox}>
             <input
               id={list}
+
               type='checkbox'
               checked={CheckList.includes(list)}
               onChange={(e) => {
@@ -16,7 +18,10 @@ export default function Filter({ FilterList, UpDateCheckBox, CheckList, name }) 
               }}
             />
 
-            <label htmlFor={list}>{list}</label>
+            <label htmlFor={list} className={styles.Text}>
+              <em></em>
+              {list}
+            </label>
           </div>
 
         )

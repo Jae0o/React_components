@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { v1 as uuidV1 } from 'uuid';
 import AddDropDownList from './AddDropDownList';
 import { MdOutlineDownloadDone } from 'react-icons/md';
-import styles from '../../../../CSS/Planner/AddListButton.module.css'
+import styles from '../../../../CSS/Planner/AddListButton.module.css';
 
 
 
@@ -76,21 +76,25 @@ export default function AddListButton({
 
   return (
     <div className={styles.MainBox}>
-      <form onSubmit={OnSubmit}>
+
+      <form onSubmit={OnSubmit} className={styles.formBox}>
+
+        <p className={styles.Title}>리스트 작성</p>
+
         {/* 이름 예정 style.DayInput */}
-        <div>
-          <label htmlFor='DayInput'>Day : </label>
+        <div className={styles.ListItem}>
+          <label htmlFor='DayInput'>Day </label>
           <select id="DayInput" onChange={(e) => UpdateDay(e.target.value)}>
             {DayList.map((Day) => (
               <option key={Day.id} value={Day.Day}>
                 {Day.Day}</option>
-            ))}
+            ))}x
           </select>
         </div>
 
         {/* 이름 예정 style.CategoryInput */}
-        <div>
-          <label htmlFor="CategoryInput">Category : </label>
+        <div className={styles.ListItem}>
+          <label htmlFor="CategoryInput">Category </label>
           <select onChange={(e) => UpdateCategory(e.target.value)}>
             {CategoryList.map((data) => (
               <option key={data.id} value={data.category}>
@@ -101,7 +105,7 @@ export default function AddListButton({
         </div>
 
         {/* 이름 예정 style.LocationInput */}
-        <div>
+        <div className={styles.ListItem}>
           <label htmlFor="LocationInput">Location</label>
           <select id="LocationInput" onChange={(e) => UpdateLocation(e.target.value)}>
             {LocationList.map((location) => (
@@ -113,30 +117,38 @@ export default function AddListButton({
         </div>
 
         {/* 이름 예정 style.TimeInput */}
-        <div>
-          <label htmlFor='StartTimeInput'>Time </label>
-          <input type='time' id="StartTimeInput" value={StartTime} onChange={(e) => UpdateStartTime(e.target.value)} />
-          <label htmlFor='EndTimeInput'>End </label>
-          <input type='time' id="EndTimeInput" value={EndTime} onChange={(e) => UpdateEndTime(e.target.value)} />
+        <div className={styles.ListItem}>
+          <label htmlFor='StartTimeInput'>Start Time </label>
+          <input className={styles.TimeInput}
+            type='time' id="StartTimeInput" value={StartTime} onChange={(e) => UpdateStartTime(e.target.value)} />
+        </div>
+        <div className={styles.ListItem}>
+          <label htmlFor='EndTimeInput'>End Time </label>
+          <input className={styles.TimeInput}
+            type='time' id="EndTimeInput" value={EndTime} onChange={(e) => UpdateEndTime(e.target.value)} />
         </div>
 
         {/* 이름 예정 style.TodoInput */}
-        <div>
-          <label htmlFor='TodoInput'>Todo : </label>
-          <input id="TodoInput" type='text' onChange={(e) => UpdateTodo(e.target.value)} />
+        <div className={styles.TodoInput}>
+          <label htmlFor='TodoInput'>Todo </label>
+          <input className={styles.TextInput}
+            id="TodoInput" type='text' onChange={(e) => UpdateTodo(e.target.value)} />
         </div>
 
         {/* 이름 예정 style.EtcInput */}
-        <div>
-          <label htmlFor='EtcInput'>ETC : </label>
-          <input id="EtcInput" type='text' onChange={(e) => UpdateEtc(e.target.value)} />
+        <div className={styles.EtcInput}>
+          <label htmlFor='EtcInput'>ETC </label>
+          <input className={styles.TextInput}
+            id="EtcInput" type='text' onChange={(e) => UpdateEtc(e.target.value)} />
         </div>
 
-        <button> <MdOutlineDownloadDone /> </button>
-      </form>
+        <div className={styles.ButtonBox}>
+          <button className={styles.SubmitButton}> 등록 <MdOutlineDownloadDone /> </button>
+        </div>
+      </form >
 
-      <div>
-        <p> 따로 옵션창 분류해서 만들 예정</p>
+      <div className={styles.CategoryBox}>
+        <p className={styles.Title}> 각종 목록 추가 </p>
         {/* Day */}
         <AddDropDownList UploadFunction={(e) => PushDay(e.trim())} name={"Day"} DeleteFunction={(e) => DeleteDay(e.trim())} />
         {/* Category */}
@@ -144,7 +156,7 @@ export default function AddListButton({
         {/* Location */}
         <AddDropDownList UploadFunction={(e) => PushLocation(e.trim())} name={"Location"} DeleteFunction={(e) => DeleteLocation(e.trim())} />
       </div>
-    </div>
+    </div >
 
   )
 };
