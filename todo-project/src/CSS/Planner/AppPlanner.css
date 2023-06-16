@@ -13,10 +13,6 @@ Body {
   margin: 0;
 }
 
-.BODY {
-  background-color: var(--color-semi-white);
-}
-
 li {
   list-style: none;
 }

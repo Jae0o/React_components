@@ -8,9 +8,10 @@
 
 .MainBox {
   border: 5px solid var(--color-brown);
-  width: 90vw;
+  width: 2000px;
   height: 700px;
   margin: 5px;
+  background-color: var(--color-semi-white);
   border-radius: 20px;
 
   display: flex;
